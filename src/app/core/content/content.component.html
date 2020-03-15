@@ -1,0 +1,62 @@
+<div class="home">
+  <section class="section1">
+    <article class="txt">
+      <p class="section1__news">Already on the cinema</p>
+      <p class="section1__title">{{back.title}}</p>
+      <div class="toolbar">
+        <span class="toolbar__rate">Rate: <span class="toolbar__rate--highlighted">{{back.rate}}</span></span>
+        <span class="toolbar__length">Length: <span class="toolbar__length--highlighted">{{back.length}}</span></span>
+      </div>
+      <p class="section1__description">{{back.description}}</p>
+      <div class="toolbar2">
+        <span class="toolbar2__detail">Genres: <span class="toolbar2__detail--highlighted">{{back.genres}}</span></span>
+        <span class="toolbar2__detail">Director: <span class="toolbar2__detail--highlighted">{{back.director}}</span></span>
+        <span class="toolbar2__detail">Starring: <span class="toolbar2__detail--highlighted">{{back.starring}}</span></span>
+      </div>
+    </article>
+    <img
+    src="{{back.img}}"
+    alt=""
+    class="section1__background-img"
+    >
+  </section>
+
+  <section class="main-section">
+    <section class="section2">
+      <button
+        class="genre-button"
+      >
+        <img src="../../../assets/images/icon-genre.png" alt="" class="genre-button__icon">
+        All movies
+      </button>
+      <aside
+        class="genre-list"
+        *ngFor="let key of keys"
+      >
+        <ul class="genre-list__item"><li [routerLink]="" [queryParams]="{genre: key}">{{genres[key]}}</li></ul>
+      </aside>
+    </section>
+    <section class="section3">
+      <label for= "selector"  class="filter-field">
+        <select name="filters" id="selector" class="filter-field__bar">
+          <option
+            value="{{filter.value}}"
+            *ngFor="let filter of filters"
+          >
+            {{filter.name}}
+          </option>
+        </select>
+      </label>
+      <div class="movie-list">
+        <div *ngFor="let movie of movies" class="movies">
+          <div class="movie-box">
+            <img src="{{movie.img}}" alt="" class="movie-box__image">
+            <div class="overlay">
+              <p class="overlay__title">{{movie.name}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+</div>
