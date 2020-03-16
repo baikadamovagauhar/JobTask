@@ -26,14 +26,24 @@
         class="genre-button"
         routerLink="/main"
       >
-        <img src="../../../assets/images/icon-genre.png" alt="" class="genre-button__icon">
+        <img
+          src="../../../assets/images/icon-genre.png"
+          alt=""
+          class="genre-button__icon">
         All movies
       </button>
       <div
         class="genre-list"
         *ngFor="let key of keys"
       >
-        <ul class="genre-list__item"><li routerLink="/main" [queryParams]="{genre: key}">{{genres[key]}}</li></ul>
+        <ul class="genre-list__item">
+          <li
+            routerLink="/main"
+            [queryParams]="{genre: key}"
+          >
+            {{genres[key]}}
+          </li>
+        </ul>
       </div>
     </aside>
     <div class="main-section-second-part">
@@ -53,9 +63,20 @@
         </label>
       </div>
       <div class="movie-list">
-        <div *ngFor="let movie of movies | filter:searchText" class="movies">
-          <div class="movie-box" routerLink="/catalog" [queryParams]="{id: movie.id}">
-            <img src="{{movie.img}}" alt="" class="movie-box__image">
+        <div
+          *ngFor="let movie of movies | filter:searchText"
+          class="movies"
+        >
+          <div
+            class="movie-box"
+            routerLink="/catalog"
+            [queryParams]="{id: movie.id}"
+          >
+            <img
+              src="{{movie.img}}"
+              alt=""
+              class="movie-box__image"
+            >
             <div class="overlay">
               <p class="overlay__title">{{movie.name}}</p>
             </div>
