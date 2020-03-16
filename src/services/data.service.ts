@@ -10,13 +10,29 @@ export class DataService {
   }
 
   getMovies(genre): any [] {
-    return movies.filter((movie) => {
-      return movie.genre.indexOf(genre) !== -1;
-    });
+    if (genre){
+      return movies.filter((movie)=>{
+        if (movie.genres.includes(genre)){
+          return movie;
+        };
+        });
+    }
+    else {
+      return movies;
+    }
+
   }
 
   getGenre() {
     return genreType;
+  }
+
+  getSpecificMovie(id) {
+    return movies.filter((movie)=>{
+      if (movie.id==id){
+        return movie;
+      }
+    })
   }
 }
 

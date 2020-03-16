@@ -1,1 +1,25 @@
-<p>chosen-movies works!</p>
+<app-header></app-header>
+<div class="container">
+  <div class="movie-img">
+    <img [src]="movies[0].img" alt="">
+  </div>
+  <div class="movie-detail">
+      <h2 class="movie-name">{{movies[0].name}}</h2>
+      <span class="movie">Genres: <span class="movie--highlighted">{{movies[0].genres}}</span></span>
+      <span class="movie">Rate: <span class="movie--highlighted">{{movies[0].rate}}</span></span>
+      <span class="movie">Duration: <span class="movie--highlighted">{{movies[0].length}}</span></span>
+      <span class="movie">About: <span class="movie--highlighted1">{{movies[0].description}}</span></span>
+  </div>
+</div>
+<h2 class="recommend">You would also like: </h2>
+<div class="movie-list">
+  <div *ngFor="let movie of similarMovie" class="movies">
+    <div class="movie-box" routerLink="/catalog" [queryParams]="{id: movie.id}">
+      <img src="{{movie.img}}" alt="" class="movie-box__image">
+      <div class="overlay">
+        <p class="overlay__title">{{movie.name}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

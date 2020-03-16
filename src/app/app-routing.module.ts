@@ -7,7 +7,8 @@ import {BrowserModule} from '@angular/platform-browser';
 
 
 const routes: Routes = [
-  { path: '' , component: MainPageComponent },
+  { path: '', redirectTo: 'main', pathMatch: 'full'},
+  { path: 'main' , component: MainPageComponent },
   { path: 'catalog' , component: ChosenMoviesComponent },
   { path: 'no-found-page', component: NoFoundComponent }
 ];

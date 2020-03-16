@@ -25,6 +25,7 @@
     <section class="section2">
       <button
         class="genre-button"
+        routerLink="/main"
       >
         <img src="../../../assets/images/icon-genre.png" alt="" class="genre-button__icon">
         All movies
@@ -33,23 +34,28 @@
         class="genre-list"
         *ngFor="let key of keys"
       >
-        <ul class="genre-list__item"><li [routerLink]="" [queryParams]="{genre: key}">{{genres[key]}}</li></ul>
+        <ul class="genre-list__item"><li routerLink="/main" [queryParams]="{genre: key}">{{genres[key]}}</li></ul>
       </aside>
     </section>
     <section class="section3">
-      <label for= "selector"  class="filter-field">
-        <select name="filters" id="selector" class="filter-field__bar">
-          <option
-            value="{{filter.value}}"
-            *ngFor="let filter of filters"
-          >
-            {{filter.name}}
-          </option>
-        </select>
+      <div class="filter-bar">
+      <label class="search">
+        <img
+          src="../../../assets/images/search-icon.png"
+          alt=""
+          class="search__logo"
+        >
+        <input
+          [(ngModel)]="searchText"
+          type="text"
+          placeholder="Search"
+          class="search__field"
+        >
       </label>
+      </div>
       <div class="movie-list">
-        <div *ngFor="let movie of movies" class="movies">
-          <div class="movie-box">
+        <div *ngFor="let movie of movies | filter:searchText" class="movies">
+          <div class="movie-box" routerLink="/catalog" [queryParams]="{id: movie.id}">
             <img src="{{movie.img}}" alt="" class="movie-box__image">
             <div class="overlay">
               <p class="overlay__title">{{movie.name}}</p>

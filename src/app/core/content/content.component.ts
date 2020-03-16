@@ -13,6 +13,7 @@ import {ActivatedRoute} from '@angular/router';
 export class ContentComponent implements OnInit {
 
   movies: any[];
+  searchText: string;
   filters = [
     {name: ' Filtered by', value: 0},
     {name: ' popularity', value: 1},
@@ -39,7 +40,8 @@ export class ContentComponent implements OnInit {
     this.querySubscription = route.queryParams.subscribe(
       (queryParam: any) =>{
         this.genre = queryParam['genre'];
-        this.getMovies(this.genre)
+        this.getMovies(this.genre);
+        console.log(this.genre);
       }
     )
   }
@@ -51,7 +53,6 @@ export class ContentComponent implements OnInit {
 
   getMovies(genre){
     this.movies = this.dataService.getMovies(genre);
-    console.log(this.movies);
   }
 
   getGenres(){
