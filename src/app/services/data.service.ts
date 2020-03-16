@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {movies} from '../app/movie.mock-data';
-import {genreType} from '../app/movie.model';
+import {movies} from '../movie.mock-data';
+import {genreType} from '../movie.model';
 
 @Injectable({
   providedIn: 'root'

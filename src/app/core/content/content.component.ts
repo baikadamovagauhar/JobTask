@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {DataService} from '../../../services/data.service';
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {DataService} from '../../services/data.service';
 import {Subscription} from 'rxjs';
 import {ActivatedRoute} from '@angular/router';
 
@@ -10,7 +10,7 @@ import {ActivatedRoute} from '@angular/router';
   providers: [DataService]
 
 })
-export class ContentComponent implements OnInit {
+export class ContentComponent implements OnInit, OnDestroy {
 
   movies: any[];
   searchText: string;
@@ -41,7 +41,6 @@ export class ContentComponent implements OnInit {
       (queryParam: any) =>{
         this.genre = queryParam['genre'];
         this.getMovies(this.genre);
-        console.log(this.genre);
       }
     )
   }
@@ -49,6 +48,11 @@ export class ContentComponent implements OnInit {
   ngOnInit() {
     this.getMovies(this.genre);
     this.getGenres();
+  }
+  ngOnDestroy(): void {
+    if (this.querySubscription){
+      this.querySubscription.unsubscribe();
+    }
   }
 
   getMovies(genre){
